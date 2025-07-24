@@ -1,0 +1,43 @@
+# Model Extraction Simulator Configuration
+
+# Victim Model Configuration
+victim_model:
+  type: "resnet18"  # resnet18, resnet50, vgg16, custom
+  dataset: "cifar10"  # cifar10, cifar100, imagenet, custom
+  num_classes: 10
+  pretrained: true
+  checkpoint_path: null
+
+# Attack Configuration
+attack:
+  strategy: "random"  # random, active_learning, adversarial, substitute
+  query_budget: 10000
+  batch_size: 32
+  temperature: 1.0  # For knowledge distillation
+  
+# Clone Model Configuration  
+clone_model:
+  architecture: "resnet18"  # Can be different from victim
+  training_epochs: 50
+  learning_rate: 0.001
+  batch_size: 64
+  optimizer: "adam"
+  
+# Dataset Configuration
+dataset:
+  name: "cifar10"
+  data_dir: "./data"
+  image_size: 32
+  normalize: true
+  
+# Experiment Configuration
+experiment:
+  name: "baseline_extraction"
+  output_dir: "./experiments"
+  save_checkpoints: true
+  log_interval: 100
+  
+# Evaluation Metrics
+evaluation:
+  metrics: ["accuracy", "fidelity", "query_efficiency"]
+  test_split: 0.2

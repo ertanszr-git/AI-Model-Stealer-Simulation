@@ -1,0 +1,66 @@
+# Real-world Model Extraction Configuration
+# Gerçek dünya model çalma konfigürasyonu
+
+# Target API Configuration
+target_api:
+  type: "custom"  # google_vision, aws_rekognition, azure_cv, custom
+  endpoint: "https://api.example.com/v1/classify"
+  api_key: "your-api-key-here"
+  
+  # API specific settings
+  input_format: "base64_json"  # base64_json, url, raw_array
+  rate_limit_delay: 1.0  # seconds between requests (be respectful!)
+  max_retries: 3
+  timeout: 30
+  
+  # Cost tracking (optional)
+  cost_per_request: 0.001  # USD per request
+  monthly_budget: 100.0  # USD
+
+# Attack Configuration (Conservative for real-world)
+attack:
+  strategy: "random"  # Start with random, then active_learning
+  query_budget: 5000  # Start smaller for real APIs
+  batch_size: 1  # Most APIs don't support batching
+  temperature: 3.0
+  
+  # Stealth settings
+  randomize_delays: true  # Add random delays to avoid detection
+  min_delay: 0.5
+  max_delay: 2.0
+  user_agent_rotation: true
+
+# Clone Model Configuration
+clone_model:
+  architecture: "lightweight"  # Start with smaller model
+  training_epochs: 100  # More epochs for fewer data
+  learning_rate: 0.0001  # Lower LR for stability
+  batch_size: 32
+  optimizer: "adam"
+  
+# Dataset Configuration for Queries
+dataset:
+  query_source: "generated"  # generated, cifar10, imagenet_subset
+  image_size: 224  # Common size for many APIs
+  normalize: false  # Let the API handle normalization
+  
+# Experiment Configuration
+experiment:
+  name: "real_world_extraction"
+  output_dir: "./real_world_experiments"
+  save_queries: true  # Save all queries for analysis
+  save_responses: true
+  log_level: "INFO"
+  
+# Safety and Ethics
+safety:
+  max_requests_per_hour: 1000
+  respect_rate_limits: true
+  stop_on_errors: true
+  log_all_requests: true
+  
+# Evaluation Metrics
+evaluation:
+  metrics: ["accuracy", "fidelity", "cost_efficiency"]
+  test_split: 0.1  # Smaller test set
+  comparison_baseline: null
