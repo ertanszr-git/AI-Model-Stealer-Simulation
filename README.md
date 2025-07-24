@@ -541,10 +541,6 @@ Bu simülatör şunları öğrenmeye yardımcı olur:
 
 Bu proje eğitim amaçlıdır. Lütfen SECURITY.md dosyasını okuyun.
 
-## 📞 İletişim
-
-Sorularınız için issue açabilir veya [contact] ile iletişime geçebilirsiniz.
-
 ---
 
 **⚠️ Hatırlatma**: Bu araç yalnızca eğitim ve araştırma amaçlıdır. Etik kurallara uygun kullanın!
